@@ -67,7 +67,7 @@ func (p *Provisioner) ProvisionBlockDevice(opts pvController.VolumeOptions, volu
 	// TODO
 	// VolumeMode will always be specified as Filesystem for host path volume,
 	// and the value passed in from the PVC spec will be ignored.
-	fs := v1.PersistentVolumeFilesystem
+	fs := v1.PersistentVolumeBlock
 
 	// It is possible that the HostPath doesn't already exist on the node.
 	// Set the Local PV to create it.
@@ -92,7 +92,7 @@ func (p *Provisioner) ProvisionBlockDevice(opts pvController.VolumeOptions, volu
 		WithAccessModes(pvc.Spec.AccessModes).
 		WithVolumeMode(fs).
 		WithCapacityQty(pvc.Spec.Resources.Requests[v1.ResourceName(v1.ResourceStorage)]).
-		WithLocalHostPathFormat(path, fsType).
+		WithLocalHostPathFormat(blkPath).
 		WithNodeAffinity(nodeHostname).
 		Build()
 
