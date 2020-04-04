@@ -18,7 +18,7 @@ if [ ${CI_TAG} != "ci" ]; then
   sudo docker tag openebs/provisioner-localpv:ci openebs/provisioner-localpv:${CI_TAG}
 fi
 
-#Tag the images with quay.io, since the operator can either have quay or docker images
+#Tag the images with quay.io, since the operator can eitest-scther have quay or docker images
 sudo docker tag openebs/m-apiserver:ci quay.io/openebs/m-apiserver:${CI_TAG}
 sudo docker tag openebs/m-exporter:ci quay.io/openebs/m-exporter:${CI_TAG}
 sudo docker tag openebs/cstor-pool-mgmt:ci quay.io/openebs/cstor-pool-mgmt:${CI_TAG}
